@@ -3,7 +3,7 @@
 from logging import Logger, getLogger, DEBUG, INFO, WARNING, ERROR, StreamHandler, FileHandler, Formatter
 
 
-def get_io_stream_logger(name: str, log_level: object = DEBUG,
+def get_io_stream_logger(name: str, log_level: int = DEBUG,
                          add_stream: bool = True,
                          filename: str = None,
                          format_str: str = "%(asctime)s - %(levelname)s - %(message)s") -> Logger:
@@ -29,7 +29,7 @@ def get_io_stream_logger(name: str, log_level: object = DEBUG,
     if filename is not None:
         file_handler = FileHandler(filename)
         file_handler.setLevel(log_level)
-        file_handler.setFormatter(format_str)
+        file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 
     return logger
